@@ -9,6 +9,8 @@
         <module name="centralcloud" />
         <module name="eureka-server" />
         <module name="eureka-server-backups" />
+        <module name="server-ribbon" />
+        <module name="server-ribbon-consumer" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,6 +18,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server-backups" options="-parameters" />
+      <module name="server-ribbon" options="-parameters" />
+      <module name="server-ribbon-consumer" options="-parameters" />
     </option>
   </component>
 </project>

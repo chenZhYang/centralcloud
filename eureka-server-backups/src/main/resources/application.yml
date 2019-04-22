@@ -1,5 +1,5 @@
-spring:
-  profiles: peer2
+server:
+  port: 8762
 eureka:
   instance:
     hostname: peer2
@@ -8,5 +8,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://peer1:8761/eureka
-server:
-  port: 8762
+  server:
+    #关闭心跳监测功能
+    enable-self-preservation: true
