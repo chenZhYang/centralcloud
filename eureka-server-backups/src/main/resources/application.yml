@@ -11,3 +11,7 @@ eureka:
   server:
     #关闭心跳监测功能
     enable-self-preservation: true
+
+spring:
+  application:
+    name: eureka-server

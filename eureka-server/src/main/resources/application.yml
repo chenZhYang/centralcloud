@@ -11,3 +11,7 @@ eureka:
     enable-self-preservation: true
 server:
   port: 8761
+
+spring:
+  application:
+    name: eureka-server
