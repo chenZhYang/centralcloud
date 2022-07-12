@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -24,7 +25,7 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/feign-test")
-    public String feignTest(@RequestBody String name){
+    public String feignTest(@RequestParam("name") String name){
         System.out.println("feign-test = "+name);
         return "feign-test = "+name + ", port = " + port;
     }
@@ -35,5 +36,18 @@ public class HelloController {
     @GetMapping("/test-load-balance")
     public String testLoadBalance(){
         return port;
+    }
+
+    @GetMapping("/hystrix-test")
+    public String hystrixTest(@RequestParam("name") String name){
+        System.out.println("hystrix-test = "+name);
+        try {
+            if (! port.equalsIgnoreCase("8764")) {
+                Thread.sleep(3000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "hystrix-test = "+name + ", port = " + port;
     }
 }

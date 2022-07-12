@@ -2,10 +2,11 @@ package com.example.serverribbon.controller;
 
 import com.example.serverribbon.feign.FeignService;
 import com.example.serverribbon.web.HelloService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -61,5 +62,11 @@ public class HelloController {
             }
         }
         return resultMap;
+    }
+
+    @GetMapping("/hystrix-test")
+    public String hystrixTest(@RequestParam("name") String name){
+        System.out.println("hystrix-test = "+name);
+        return feignService.hystrixTest(name);
     }
 }

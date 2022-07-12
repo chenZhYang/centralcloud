@@ -8,3 +8,13 @@ server:
 spring:
   application:
     name: server-ribbon
+
+
+feign:
+  hystrix:
+    # 熔断功能开关
+    enabled: true
+hystrix:
+  metrics:
+    # 默认超时时间设置 2s
+    polling-interval-ms: 2000
