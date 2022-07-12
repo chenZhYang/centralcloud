@@ -11,8 +11,12 @@ import org.springframework.web.client.RestTemplate;
  */
 @Service
 public class HelloService {
+    private final RestTemplate restTemplate;
+
     @Autowired
-    RestTemplate restTemplate;
+    public HelloService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public String hello(String name){
         System.out.println("http://server-ribbon-consumer/hello?name="+name);
