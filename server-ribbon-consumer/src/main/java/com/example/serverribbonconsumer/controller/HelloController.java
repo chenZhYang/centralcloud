@@ -35,6 +35,14 @@ public class HelloController {
      */
     @GetMapping("/test-load-balance")
     public String testLoadBalance(){
+        System.out.println("hystrix-test");
+        try {
+            if (! port.equalsIgnoreCase("8764")) {
+                Thread.sleep(100);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return port;
     }
 

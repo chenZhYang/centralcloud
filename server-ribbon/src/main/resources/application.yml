@@ -18,3 +18,16 @@ hystrix:
   metrics:
     # 默认超时时间设置 2s
     polling-interval-ms: 2000
+
+server-ribbon:
+  ribbon:
+    #设置负载均衡策略
+    # Ribbon默认的负载均衡策略是轮询模式
+    # 权重策略：WeightedResponseTimeRule
+    # 随机策略：RandomRule
+    # 最小连接数策略：BestAvailableRule
+    # 重试策略：RetryRule
+    # 可用敏感性策略：AvailabilityFilteringRule
+    # 区域敏感策略：ZoneAvoidanceRule
+    # 可通过继承RoundRibbonRule 来实现自定义负载均衡策略
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
