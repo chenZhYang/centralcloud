@@ -1,6 +1,5 @@
 package com.example.serverribbon;
 
-import com.netflix.loadbalancer.RoundRobinRule;
 import com.netflix.loadbalancer.WeightedResponseTimeRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,8 +16,8 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableFeignClients
-@RibbonClient(value = "server-ribbon", configuration = RoundRobinRule.class)
-@RibbonClients(defaultConfiguration = RoundRobinRule.class)
+@RibbonClient(value = "server-ribbon", configuration = WeightedResponseTimeRule.class)
+@RibbonClients(defaultConfiguration = WeightedResponseTimeRule.class)
 public class ServerRibbonApplication {
 
     public static void main(String[] args) {
